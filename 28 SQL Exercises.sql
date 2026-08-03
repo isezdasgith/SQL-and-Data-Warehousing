@@ -153,3 +153,21 @@ SELECT L.LName, L.FName, S.SubjectCode, S.LectDay, S.LectTime
 FROM Lecturer L, Lecture S
 WHERE L.StaffNo = S.StaffNo;
 
+-- (18) Are there any lecturers who are not teaching?
+SELECT FName, LName
+FROM Lecturer
+WHERE StaffNo 
+NOT IN (SELECT StaffNo
+        FROM Lecture);
+
+-- (19) List all the subjects offered in the first semester.
+SELECT *
+FROM Subject
+WHERE Semester = 1;
+
+-- (20) List all the students by first-name, last-name, date-of-birth, and fee-paid details, who are
+-- born after 1990 and before 1995.
+SELECT FName, LName, DOB, FeePaid
+FROM Student
+WHERE DOB BETWEEN to_date('01-JAN-1991','DD-MON-YYYY')
+AND to_date('31-DEC-1994','DD-MON-YYYY');
