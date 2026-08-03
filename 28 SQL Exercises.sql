@@ -188,3 +188,18 @@ SELECT T.TutorNo, T.StudentNo, FName, LName
 FROM Student S, Tutor T
 WHERE S.StudentNo = T.StudentNo;
 
+-- (23) Select the lecturer(s) whose research area is ‘Network Management’.
+SELECT StaffNo, FName, LName
+FROM Lecturer
+WHERE ResearchArea = 'Network Management';
+
+-- (24) Calculate the average salary of a lecturer.
+-- Notes: NULL values will not be included in the average calculation. If you would include the
+-- NULL values into the average calculation, then you could use the NVL function.
+-- In this example, if Salary is NULL then Salary=0.
+SELECT AVG(NVL(SALARY,0)) AS "Average Salary"
+FROM Lecturer;
+
+-- (25) Calculate the minimum and maximum salary of the lecturers.
+SELECT MIN(Salary) AS "Min Salary", MAX(Salary) AS "Max Salary"
+FROM Lecturer;
