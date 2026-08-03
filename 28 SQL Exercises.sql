@@ -171,7 +171,6 @@ FROM Student
 WHERE DOB BETWEEN to_date('01-JAN-1991','DD-MON-YYYY')
 AND to_date('31-DEC-1994','DD-MON-YYYY');
 
-
 -- (21) List all the students enrolled in the database subject.
 -- (Note: database = CSE21DB, CSE31DB, CSE41FDB)
 SELECT DISTINCT S.StudentNo, FName, LName
@@ -180,7 +179,6 @@ WHERE (SubjectCode = 'CSE21DB'
 OR SubjectCode = 'CSE31DB'
 OR SubjectCode = 'CSE41FDB')
 AND S.StudentNo = SE.StudentNo;
-
 
 -- (22) List the students who are tutors.
 SELECT T.TutorNo, T.StudentNo, FName, LName
