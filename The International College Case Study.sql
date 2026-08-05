@@ -65,17 +65,20 @@ from CollegeFact
 where upper(Country) = upper('Australia');
 
 -- (2) What is the total income for each course?
-select CourseCode, sum(Total_Income) as Total_Income_Per_Course
-from CollegeFact
-group by CourseCode;
+select CourseCode, CourseName, sum(Total_Income) as Total_Income_Per_Course
+from CollegeFact natural join courseDim
+group by CourseCode, CourseName;
 
 -- (3) What is the total income for the Master of Data Science 
 -- course(C6003) in 2019?
-select sum(Total_Income) as Total_Income_C6003_2019
-from CollegeFact
-where upper(CourseCode) = upper('C6003') and EnrolmentYear = 2019;
+select CourseCode, CourseName, sum(Total_Income) as Total_Income_C6003_2019
+from CollegeFact natural join courseDim
+where EnrolmentYear = 2019
+and upper(CourseName) = upper('Master of Data Science')
+group by CourseCode, CourseName;
 
 -- (4) What is the total income from New Star Agent?
-select sum(Total_Income) as Total_Income_New_Star_Agent
-from CollegeFact
-where AgentNo = 'NSA';
+select AgentName, sum(Total_Income) as Total_Income_New_Star_Agent
+from CollegeFact natural join AGENTDIM
+where upper(AgentName) = upper('New Star Agent')
+group by AgentName;
